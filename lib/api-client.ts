@@ -1,4 +1,28 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+function getApiBaseUrl(): string {
+  // Check for explicit environment variable first
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+
+  // In development, use localhost
+  if (process.env.NODE_ENV === "development") {
+    return "http://localhost:3001";
+  }
+
+  // In production on Vercel, construct the backend URL from current domain
+  if (typeof window !== "undefined") {
+    const { protocol, host } = window.location;
+    // Assumes backend runs on same domain as frontend on Vercel
+    return `${protocol}//${host}`;
+  }
+
+  // Server-side fallback for production
+  return process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3001";
+}
+
+const API_BASE_URL = getApiBaseUrl();
 
 export async function getProviders() {
   const res = await fetch(`${API_BASE_URL}/api/providers`, {
