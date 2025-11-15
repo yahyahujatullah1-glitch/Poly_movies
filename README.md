@@ -36,31 +36,31 @@ PolyMovies Desktop is a hybrid Electron application that packages the Vega provi
 
 ### Installation
 
-```bash
+\`\`\`bash
 npm install
-```
+\`\`\`
 
 ### Build the provider bundle
 
-```bash
+\`\`\`bash
 npm run build
-```
+\`\`\`
 
 This compiles TypeScript providers, organizes outputs under `dist/`, and minifies JavaScript.
 
 ### Run the Express API (optional)
 
-```bash
+\`\`\`bash
 npm run dev
-```
+\`\`\`
 
 Launches the standalone development server at `http://localhost:3001` for browser testing.
 
 ## Electron Development Workflow
 
-```bash
+\`\`\`bash
 npm run electron:dev
-```
+\`\`\`
 
 - Executes `npm run build` to refresh providers.
 - Starts the Express server inside Electron.
@@ -70,21 +70,21 @@ npm run electron:dev
 
 Portable executable:
 
-```bash
+\`\`\`bash
 npm run electron:build:portable
-```
+\`\`\`
 
 NSIS installer:
 
-```bash
+\`\`\`bash
 npm run electron:build:installer
-```
+\`\`\`
 
 Outputs are written to the `release/` directory. Both formats embed Chromium and Node.js, so end users only need the generated `.exe`.
 
 ## Project Structure
 
-```
+\`\`\`
 public/            # Front-end assets (HTML/CSS/JS)
 providers/         # Provider source folders (TypeScript)
 dist/              # Compiled provider outputs (generated)
@@ -93,10 +93,9 @@ icons/             # Application icons
 build-simple.js    # Provider build pipeline
 dev-server.js      # Express server powering the API
 package.json       # Scripts, dependencies, electron-builder config
-```
+\`\`\`
 
 ## Credits
 
 - Built with  provider modules from [`Zenda-Cross/vega-providers`](https://github.com/Zenda-Cross/vega-providers.git)
 - Special thanks to [Zenda-Cross](https://github.com/Zenda-Cross) for the provider
-
